@@ -108,6 +108,15 @@
             --shadow-custom-hover: 0px 16px 32px -4px rgba(var(--shadow-color), 0.16);
         }
 
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+
         html {
             scroll-behavior: smooth;
         }
@@ -299,21 +308,7 @@
 
         @media (max-width: 640px) {
             .side-cta {
-                width: 30px;
-                font-size: 0.55rem;
-                padding: 12px;
-            }
-
-            .side-cta:hover {
-                width: 40px;
-            }
-
-            .side-cta.left {
-                left: -6px;
-            }
-
-            .side-cta.right {
-                right: -6px;
+                display: none;
             }
         }
 
@@ -410,7 +405,7 @@
          STICKY NAVIGATION
     ═══════════════════════════════════════════ -->
     <header class="fixed w-full top-0 z-50 glass-nav border-b border-neutral-200 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-8 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <a href="index.html" class="flex-shrink-0 flex items-center gap-2.5">
                     <div
@@ -460,8 +455,7 @@
     <!-- ═══════════════════════════════════════════
          HERO SECTION
     ═══════════════════════════════════════════ -->
-    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-gradient-brand"
-        style="max-height: 900px;">
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-gradient-brand">
         <!-- Decorative orbs -->
         <div
             class="absolute top-0 right-0 w-96 h-96 bg-secondary-500/20 rounded-full filter blur-3xl animate-pulse-slow pointer-events-none">
@@ -473,7 +467,7 @@
             class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5 pointer-events-none">
         </div>
 
-        <div class="max-w-7xl mx-auto px-8 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <!-- Left Content -->
                 <div class="space-y-7 animate-fade-in-up">
@@ -542,7 +536,7 @@
                 </div>
 
                 <!-- Right Visual -->
-                <div class="relative flex items-center justify-center">
+                <div class="relative flex items-center justify-center overflow-hidden sm:overflow-visible px-6 sm:px-0 mt-8 lg:mt-0">
                     <div class="relative w-full max-w-lg mx-auto">
                         <!-- Glow ring -->
                         <div
@@ -556,7 +550,7 @@
                             <div class="absolute inset-0 bg-gradient-to-t from-primary-900/40 to-transparent"></div>
                         </div>
                         <!-- Floating badge 1 -->
-                        <div class="absolute -bottom-5 -left-5 bg-white rounded-xl shadow-xl border border-neutral-100 px-4 py-3 flex items-center gap-3 animate-float"
+                        <div class="absolute -bottom-5 left-0 sm:-left-5 bg-white rounded-xl shadow-xl border border-neutral-100 px-4 py-3 flex items-center gap-3 animate-float"
                             style="animation-delay: 1s;">
                             <div
                                 class="w-9 h-9 bg-secondary-100 rounded-full flex items-center justify-center text-secondary-600 shrink-0">
@@ -567,18 +561,7 @@
                                 <p class="text-sm font-bold text-neutral-900">5 Product Lines</p>
                             </div>
                         </div>
-                        <!-- Floating badge 2 -->
-                        <div class="absolute -top-5 -right-5 bg-white rounded-xl shadow-xl border border-neutral-100 px-4 py-3 flex items-center gap-3 animate-float"
-                            style="animation-delay: 2.5s;">
-                            <div
-                                class="w-9 h-9 bg-primary-100 rounded-full flex items-center justify-center text-primary-700 shrink-0">
-                                <i data-lucide="award" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs text-neutral-400 font-semibold uppercase tracking-wide">Certified</p>
-                                <p class="text-sm font-bold text-neutral-900">ISO 9001:2015</p>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -595,8 +578,8 @@
     <!-- ═══════════════════════════════════════════
          PRODUCT CATEGORY FILTER
     ═══════════════════════════════════════════ -->
-    <section class="py-14 bg-neutral-50 border-b border-neutral-200" style="max-height: 280px;">
-        <div class="max-w-7xl mx-auto px-8 sm:px-6 lg:px-8">
+    <section class="py-14 bg-neutral-50 border-b border-neutral-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8 reveal">
                 <span class="text-secondary-600 font-bold tracking-wider uppercase text-sm">Browse By Category</span>
                 <h2 class="font-heading text-3xl font-bold text-neutral-900 mt-1">Our Product Range</h2>
@@ -634,8 +617,8 @@
     <!-- ═══════════════════════════════════════════
          PRODUCT GRID
     ═══════════════════════════════════════════ -->
-    <section id="products-grid" class="py-20 lg:py-28 bg-white" style="max-height: 2400px;">
-        <div class="max-w-7xl mx-auto px-8 sm:px-6 lg:px-8">
+    <section id="products-grid" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Section header -->
             <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 reveal">
@@ -906,8 +889,7 @@
     <!-- ═══════════════════════════════════════════
          CUSTOM MANUFACTURING SECTION
     ═══════════════════════════════════════════ -->
-    <section class="py-20 lg:py-28 bg-gradient-brand-light text-white relative overflow-hidden"
-        style="max-height: 700px;">
+    <section class="py-20 lg:py-28 bg-gradient-brand-light text-white relative overflow-hidden">
         <div
             class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5 pointer-events-none">
         </div>
@@ -915,7 +897,7 @@
             class="absolute top-0 right-0 w-80 h-80 bg-secondary-500/20 rounded-full filter blur-3xl pointer-events-none">
         </div>
 
-        <div class="max-w-7xl mx-auto px-8 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="reveal">
                     <span class="text-secondary-400 font-bold tracking-wider uppercase text-sm">Manufacturing
@@ -994,8 +976,8 @@
     <!-- ═══════════════════════════════════════════
          INDUSTRIES SECTION
     ═══════════════════════════════════════════ -->
-    <section id="industries-section" class="py-20 lg:py-28 bg-white" style="max-height: 900px;">
-        <div class="max-w-7xl mx-auto px-8 sm:px-6 lg:px-8">
+    <section id="industries-section" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-14 reveal">
                 <span class="text-secondary-600 font-bold tracking-wider uppercase text-sm">Sectors We Serve</span>
                 <h2 class="font-heading text-3xl md:text-4xl font-bold text-neutral-900 mt-2 mb-4">Industries Using Our
@@ -1093,7 +1075,7 @@
     <!-- ═══════════════════════════════════════════
          BULK ORDER CTA SECTION
     ═══════════════════════════════════════════ -->
-    <section class="py-20 bg-gradient-brand text-white text-center relative overflow-hidden" style="max-height: 500px;">
+    <section class="py-20 bg-gradient-brand text-white text-center relative overflow-hidden">
         <div
             class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5 pointer-events-none">
         </div>
@@ -1101,7 +1083,7 @@
             class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-secondary-500/20 rounded-full filter blur-3xl pointer-events-none">
         </div>
 
-        <div class="max-w-4xl mx-auto px-8 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div
                 class="inline-flex items-center px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold uppercase tracking-wider mb-6">
                 <span class="w-2 h-2 rounded-full bg-secondary-400 mr-2 animate-pulse"></span>
@@ -1130,7 +1112,7 @@
          FOOTER
     ═══════════════════════════════════════════ -->
     <footer class="bg-neutral-900 text-white pt-16 pb-8 border-t border-neutral-800">
-        <div class="max-w-7xl mx-auto px-8 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                 <div>
                     <div class="flex items-center gap-2 mb-4">
