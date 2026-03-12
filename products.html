@@ -250,6 +250,86 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #94a3b8;
         }
+
+        /* ── SIDE EDGE CTA BARS ── */
+        .side-cta {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 40;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            width: 44px;
+            padding: 20px 10px;
+            background: #1E3A6D;
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            box-shadow: 2px 0 16px rgba(30,58,109,0.18);
+            transition: background 0.2s ease, width 0.2s ease;
+            user-select: none;
+        }
+        .side-cta:hover { background: #F97316; width: 50px; }
+        .side-cta.left {
+            left: 0;
+            border-radius: 0 10px 10px 0;
+            transform: translateY(-50%);
+            text-orientation: mixed;
+        }
+        .side-cta.right {
+            right: 0;
+            border-radius:  0 10px 10px 0 ;
+            transform: translateY(-50%) rotate(180deg);
+        }
+        @media (max-width: 640px) {
+            .side-cta { width: 30px; font-size: 0.55rem; padding: 12px; }
+            .side-cta:hover { width: 40px; }
+            .side-cta.left{
+                left: -6px;
+            }
+            .side-cta.right {
+                right: -6px;
+            }
+        }
+
+        /* ── MODAL BACKDROP ── */
+        .modal-backdrop {
+            position: fixed; inset: 0; z-index: 1000;
+            background: rgba(15,23,42,0.6);
+            backdrop-filter: blur(4px);
+            display: none; align-items: center; justify-content: center;
+            padding: 1rem;
+        }
+        .modal-backdrop.active { display: flex; }
+        .modal-box {
+            background: #fff; border-radius: 1rem;
+            width: 100%; max-width: 640px;
+            max-height: 90vh; overflow-y: auto;
+            box-shadow: 0 24px 64px rgba(15,23,42,0.2);
+            animation: modalIn 0.3s ease;
+        }
+        .modal-box.wide { max-width: 860px; }
+        @keyframes modalIn { from { opacity:0; transform: scale(0.95) translateY(16px); } to { opacity:1; transform:none; } }
+
+        /* ── ACCORDION ── */
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .accordion-content.open { max-height: 2000px; }
+        .accordion-btn .chevron { transition: transform 0.3s ease; }
+        .accordion-btn.open .chevron { transform: rotate(180deg); }
+
+        /* ── GALLERY LIGHTBOX ── */
+        #lightbox { position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,0.92); display: none; align-items: center; justify-content: center; }
+        #lightbox.active { display: flex; }
+        #lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 0.5rem; object-fit: contain; }
     </style>
 </head>
 
@@ -259,7 +339,7 @@
          STICKY NAVIGATION
     ═══════════════════════════════════════════ -->
     <header class="fixed w-full top-0 z-50 glass-nav border-b border-neutral-200 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-8 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <a href="index.html" class="flex-shrink-0 flex items-center gap-2.5">
                     <div class="w-10 h-10 bg-gradient-to-br from-primary-700 to-secondary-500 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-md">S</div>
@@ -309,7 +389,7 @@
             class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5 pointer-events-none">
         </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-8 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <!-- Left Content -->
                 <div class="space-y-7 animate-fade-in-up">
@@ -432,7 +512,7 @@
          PRODUCT CATEGORY FILTER
     ═══════════════════════════════════════════ -->
     <section class="py-14 bg-neutral-50 border-b border-neutral-200" style="max-height: 280px;">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-8 sm:px-6 lg:px-8">
             <div class="text-center mb-8 reveal">
                 <span class="text-secondary-600 font-bold tracking-wider uppercase text-sm">Browse By Category</span>
                 <h2 class="font-heading text-3xl font-bold text-neutral-900 mt-1">Our Product Range</h2>
@@ -471,7 +551,7 @@
          PRODUCT GRID
     ═══════════════════════════════════════════ -->
     <section id="products-grid" class="py-20 lg:py-28 bg-white" style="max-height: 2400px;">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-8 sm:px-6 lg:px-8">
 
             <!-- Section header -->
             <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 reveal">
@@ -813,7 +893,7 @@
             class="absolute top-0 right-0 w-80 h-80 bg-secondary-500/20 rounded-full filter blur-3xl pointer-events-none">
         </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-8 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="reveal">
                     <span class="text-secondary-400 font-bold tracking-wider uppercase text-sm">Manufacturing
@@ -893,7 +973,7 @@
          INDUSTRIES SECTION
     ═══════════════════════════════════════════ -->
     <section id="industries-section" class="py-20 lg:py-28 bg-white" style="max-height: 900px;">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-8 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-14 reveal">
                 <span class="text-secondary-600 font-bold tracking-wider uppercase text-sm">Sectors We Serve</span>
                 <h2 class="font-heading text-3xl md:text-4xl font-bold text-neutral-900 mt-2 mb-4">Industries Using Our
@@ -999,7 +1079,7 @@
             class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-secondary-500/20 rounded-full filter blur-3xl pointer-events-none">
         </div>
 
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-4xl mx-auto px-8 sm:px-6 lg:px-8 relative z-10">
             <div
                 class="inline-flex items-center px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold uppercase tracking-wider mb-6">
                 <span class="w-2 h-2 rounded-full bg-secondary-400 mr-2 animate-pulse"></span>
@@ -1028,9 +1108,8 @@
          FOOTER
     ═══════════════════════════════════════════ -->
     <footer class="bg-neutral-900 text-white pt-16 pb-8 border-t border-neutral-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-8 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-                <!-- Brand -->
                 <div>
                     <div class="flex items-center gap-2 mb-4">
                         <div class="w-8 h-8 bg-gradient-to-br from-primary-600 to-secondary-500 rounded flex items-center justify-center font-bold text-sm">S</div>
@@ -1043,38 +1122,41 @@
                         <a href="https://www.instagram.com/shree_hariindustries?igsh=bXFoaTV3ZDM2djNt" class="text-neutral-400 hover:text-white transition-colors" aria-label="Instagram"><i data-lucide="instagram" class="w-5 h-5"></i></a>
                     </div>
                 </div>
-
-                <!-- Company -->
                 <div>
                     <h4 class="font-bold text-white mb-4">Company</h4>
                     <ul class="space-y-2 text-sm text-neutral-400">
                         <li><a href="index.html" class="hover:text-secondary-500 transition-colors">Home</a></li>
-                        <li><a href="#about" class="hover:text-secondary-500 transition-colors">About Us</a></li>
-                        <li><a href="#products" class="hover:text-secondary-500 transition-colors">Products</a></li>
-                        <li><a href="contactus.html" class="hover:text-secondary-500 transition-colors">Contact</a></li>
+                        <li><a href="index.html#about" class="hover:text-secondary-500 transition-colors">About Us</a></li>
+                        <li><a href="products.html" class="hover:text-secondary-500 transition-colors">Products</a></li>
+                        <li><a href="index.html#industries" class="hover:text-secondary-500 transition-colors">Industries We Serve</a></li>
+                        <li><a href="index.html#gallery" class="hover:text-secondary-500 transition-colors">Gallery</a></li>
+                        <li><a href="contactus.html" class="hover:text-secondary-500 transition-colors">Contact Us</a></li>
                     </ul>
                 </div>
-
-                <!-- Industries -->
                 <div>
-                    <h4 class="font-bold text-white mb-4">Industries</h4>
+                    <h4 class="font-bold text-white mb-4">Our Products</h4>
                     <ul class="space-y-2 text-sm text-neutral-400">
-                        <li><a href="#" class="hover:text-secondary-500 transition-colors">Manufacturing</a></li>
-                        <li><a href="#" class="hover:text-secondary-500 transition-colors">Logistics</a></li>
-                        <li><a href="#" class="hover:text-secondary-500 transition-colors">Agriculture</a></li>
-                        <li><a href="#" class="hover:text-secondary-500 transition-colors">Export</a></li>
+                        <li><span class="hover:text-secondary-500 transition-colors">Stretch Film</span></li>
+                        <li><span class="hover:text-secondary-500 transition-colors">Machine Grade Stretch Film</span></li>
+                        <li><span class="hover:text-secondary-500 transition-colors">VCI Film</span></li>
+                        <li><span class="hover:text-secondary-500 transition-colors">Silage Film</span></li>
+                        <li><span class="hover:text-secondary-500 transition-colors">BOPP Adhesive Tape</span></li>
                     </ul>
                 </div>
-
-                <!-- Contact -->
                 <div>
                     <h4 class="font-bold text-white mb-4">Quick Contact</h4>
                     <ul class="space-y-3 text-sm text-neutral-400">
                         <li class="flex items-center gap-2">
-                            <i data-lucide="message-circle" class="w-4 h-4 text-secondary-500"></i> <a href="https://wa.me/919274799004" class="hover:text-white transition-colors">+91 92747 99004</a>
+                            <i data-lucide="message-circle" class="w-4 h-4 text-secondary-500 shrink-0"></i>
+                            <a href="https://wa.me/919274799004" class="hover:text-white transition-colors">+91 92747 99004</a>
                         </li>
                         <li class="flex items-center gap-2">
-                            <i data-lucide="mail" class="w-4 h-4 text-secondary-500"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ff96919990bf8c978d9a9a979e8d9696919b8a8c8b8d969a8cd19c9092">[email&#160;protected]</a>
+                            <i data-lucide="mail" class="w-4 h-4 text-secondary-500 shrink-0"></i>
+                            <span>info@shreehari-industries.com</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-secondary-500 shrink-0 mt-0.5"></i>
+                            <span>Shiv Aradhana Industrial Park, Kuha, Ahmedabad – 382433</span>
                         </li>
                     </ul>
                 </div>
@@ -1087,7 +1169,11 @@
         </div>
     </footer>
 
-    <!-- Floating Action Buttons -->
+    <!-- ═══ SIDE EDGE CTA BARS ═══ -->
+    <button class="side-cta left" onclick="openEnquiryModal()" aria-label="Enquire Now">Enquire Now</button>
+    <button class="side-cta right" onclick="openEnquiryModal()" aria-label="Enquire Now">Enquire Now</button>
+
+    <!-- ═══ FLOATING WHATSAPP ═══ -->
     <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
         <a href="https://wa.me/919274799004"
             class="flex items-center justify-center w-14 h-14 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 hover:scale-110 transition-all duration-300 group relative"
@@ -1098,9 +1184,109 @@
     </div>
 
     <!-- ═══════════════════════════════════════════
+         ENQUIRY MODAL
+    ═══════════════════════════════════════════ -->
+    <div id="enquiry-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="enquiry-modal-title" onclick="closeOnBackdrop(event,'enquiry-modal')">
+        <div class="modal-box">
+            <div class="flex items-center justify-between p-6 border-b border-neutral-100">
+                <div>
+                    <h2 id="enquiry-modal-title" class="font-heading text-xl font-bold text-neutral-900">Send Enquiry</h2>
+                    <p class="text-sm text-neutral-500 mt-0.5">We'll respond within 24 hours</p>
+                </div>
+                <button onclick="closeModal('enquiry-modal')" class="w-9 h-9 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-600 transition-colors" aria-label="Close">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="p-6 space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-name">Name <span class="text-red-500">*</span></label>
+                        <input type="text" id="eq-name" placeholder="Your full name" class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-phone">Phone Number <span class="text-red-500">*</span></label>
+                        <input type="tel" id="eq-phone" placeholder="+91 XXXXX XXXXX" class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-email">Email</label>
+                    <input type="email" id="eq-email" placeholder="your@email.com" class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-company">Company Name</label>
+                    <input type="text" id="eq-company" placeholder="Your company name" class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-product">Product Interested In</label>
+                    <select id="eq-product" class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors bg-white">
+                        <option value="">— Select a Product —</option>
+                        <option value="stretch-film">Stretch Film</option>
+                        <option value="machine-stretch">Machine Grade Stretch Film</option>
+                        <option value="manual-stretch">Manual / Baby Core Stretch Film</option>
+                        <option value="colour-stretch">Colour Stretch Film</option>
+                        <option value="printed-stretch">Printed Stretch Film</option>
+                        <option value="vci-film">VCI Film</option>
+                        <option value="silage-film">Silage Film</option>
+                        <option value="bopp-tape">BOPP Adhesive Tape</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-message">Message</label>
+                    <textarea id="eq-message" rows="3" placeholder="Describe your requirements, quantities, specifications..." class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors resize-none"></textarea>
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                    <button onclick="submitEnquiry()" class="flex-1 inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white bg-primary-700 rounded-lg hover:bg-primary-800 transition-colors">
+                        <i data-lucide="send" class="w-4 h-4 mr-2"></i>Submit Enquiry
+                    </button>
+                    <a id="enquiry-wa-btn" href="https://wa.me/919274799004" target="_blank" class="flex-1 inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white bg-green-500 rounded-lg hover:bg-green-600 transition-colors">
+                        <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i>WhatsApp Enquiry
+                    </a>
+                </div>
+                <button onclick="closeModal('enquiry-modal')" class="w-full text-center text-sm text-neutral-400 hover:text-neutral-600 transition-colors py-1">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
          SCRIPTS
     ═══════════════════════════════════════════ -->
     <script>
+        // ── Modal Controls ──
+        function openEnquiryModal() {
+            document.getElementById('enquiry-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeOnBackdrop(e, id) {
+            if (e.target === document.getElementById(id)) closeModal(id);
+        }
+
+        // ── Enquiry Submit ──
+        function submitEnquiry() {
+            const name = document.getElementById('eq-name').value.trim();
+            const phone = document.getElementById('eq-phone').value.trim();
+            if (!name || !phone) {
+                alert('Please fill in your Name and Phone Number.');
+                return;
+            }
+            const product = document.getElementById('eq-product').value;
+            const company = document.getElementById('eq-company').value.trim();
+            const email = document.getElementById('eq-email').value.trim();
+            const message = document.getElementById('eq-message').value.trim();
+            const productLabel = document.getElementById('eq-product').options[document.getElementById('eq-product').selectedIndex].text;
+            const waText = `*New Enquiry – Shree Hari Industries*\n\n*Name:* ${name}\n*Phone:* ${phone}${email ? '\n*Email:* ' + email : ''}${company ? '\n*Company:* ' + company : ''}\n*Product:* ${product ? productLabel : 'General Enquiry'}${message ? '\n*Message:* ' + message : ''}`;
+            const waUrl = `https://wa.me/919274799004?text=${encodeURIComponent(waText)}`;
+            window.open(waUrl, '_blank');
+            closeModal('enquiry-modal');
+        }
+
         // Initialize Lucide Icons
         lucide.createIcons();
 
@@ -1168,6 +1354,13 @@
                 header.classList.add('shadow-md');
             } else {
                 header.classList.remove('shadow-md');
+            }
+        });
+
+        // ESC key closes modals
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal('enquiry-modal');
             }
         });
     </script>
