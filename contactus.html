@@ -224,28 +224,44 @@
             cursor: pointer;
             border: none;
             outline: none;
-            box-shadow: 2px 0 16px rgba(30,58,109,0.18);
+            box-shadow: 2px 0 16px rgba(30, 58, 109, 0.18);
             transition: background 0.2s ease, width 0.2s ease;
             user-select: none;
         }
-        .side-cta:hover { background: #F97316; width: 50px; }
+
+        .side-cta:hover {
+            background: #F97316;
+            width: 50px;
+        }
+
         .side-cta.left {
             left: 0;
             border-radius: 0 10px 10px 0;
             transform: translateY(-50%);
             text-orientation: mixed;
         }
+
         .side-cta.right {
             right: 0;
-            border-radius:  0 10px 10px 0 ;
+            border-radius: 0 10px 10px 0;
             transform: translateY(-50%) rotate(180deg);
         }
+
         @media (max-width: 640px) {
-            .side-cta { width: 30px; font-size: 0.55rem; padding: 12px; }
-            .side-cta:hover { width: 40px; }
-            .side-cta.left{
+            .side-cta {
+                width: 30px;
+                font-size: 0.55rem;
+                padding: 12px;
+            }
+
+            .side-cta:hover {
+                width: 40px;
+            }
+
+            .side-cta.left {
                 left: -6px;
             }
+
             .side-cta.right {
                 right: -6px;
             }
@@ -253,33 +269,89 @@
 
         /* ── MODAL BACKDROP ── */
         .modal-backdrop {
-            position: fixed; inset: 0; z-index: 1000;
-            background: rgba(15,23,42,0.6);
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(4px);
-            display: none; align-items: center; justify-content: center;
+            display: none;
+            align-items: center;
+            justify-content: center;
             padding: 1rem;
         }
-        .modal-backdrop.active { display: flex; }
+
+        .modal-backdrop.active {
+            display: flex;
+        }
+
         .modal-box {
-            background: #fff; border-radius: 1rem;
-            width: 100%; max-width: 640px;
-            max-height: 90vh; overflow-y: auto;
-            box-shadow: 0 24px 64px rgba(15,23,42,0.2);
+            background: #fff;
+            border-radius: 1rem;
+            width: 100%;
+            max-width: 640px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 24px 64px rgba(15, 23, 42, 0.2);
             animation: modalIn 0.3s ease;
         }
-        .modal-box.wide { max-width: 860px; }
-        @keyframes modalIn { from { opacity:0; transform: scale(0.95) translateY(16px); } to { opacity:1; transform:none; } }
+
+        .modal-box.wide {
+            max-width: 860px;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
 
         /* ── ACCORDION ── */
-        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-        .accordion-content.open { max-height: 2000px; }
-        .accordion-btn .chevron { transition: transform 0.3s ease; }
-        .accordion-btn.open .chevron { transform: rotate(180deg); }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+
+        .accordion-content.open {
+            max-height: 2000px;
+        }
+
+        .accordion-btn .chevron {
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-btn.open .chevron {
+            transform: rotate(180deg);
+        }
 
         /* ── GALLERY LIGHTBOX ── */
-        #lightbox { position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,0.92); display: none; align-items: center; justify-content: center; }
-        #lightbox.active { display: flex; }
-        #lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 0.5rem; object-fit: contain; }
+        #lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(0, 0, 0, 0.92);
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #lightbox.active {
+            display: flex;
+        }
+
+        #lightbox img {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 0.5rem;
+            object-fit: contain;
+        }
+
         /* ── FRAUD ALERT POPUP ── */
         .visitor-popup-backdrop {
             position: fixed;
@@ -296,11 +368,13 @@
             pointer-events: none;
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
+
         .visitor-popup-backdrop.active {
             opacity: 1;
             visibility: visible;
             pointer-events: auto;
         }
+
         .visitor-popup-card {
             width: min(100%, 1060px);
             max-width: 1060px;
@@ -314,18 +388,22 @@
             display: flex;
             flex-direction: column;
         }
+
         .visitor-popup-body {
             overflow-y: auto;
             flex: 1;
         }
+
         .visitor-popup-backdrop.active .visitor-popup-card {
             transform: translateY(0);
         }
+
         @media (max-width: 640px) {
             .visitor-popup-backdrop {
                 padding: 0.5rem 1rem 1rem;
                 align-items: center;
             }
+
             .visitor-popup-card {
                 width: 100%;
                 max-width: 100%;
@@ -448,11 +526,13 @@
                         manufacturing solutions. We are ready to serve your industrial needs.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                        <a href="https://wa.me/919274799004" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-200 bg-green-500 rounded-lg hover:bg-green-600 hover:shadow-lg hover:shadow-green-500/30 hover:-translate-y-1">
+                        <a href="https://wa.me/919274799004"
+                            class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-200 bg-green-500 rounded-lg hover:bg-green-600 hover:shadow-lg hover:shadow-green-500/30 hover:-translate-y-1">
                             <i data-lucide="message-circle" class="w-5 h-5 mr-2"></i>
                             WhatsApp for Bulk Order
                         </a>
-                        <a href="https://wa.me/919274799004" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-primary-700 transition-all duration-200 bg-white border-2 border-primary-100 rounded-lg hover:border-primary-600 hover:bg-primary-50 hover:text-primary-800 hover:-translate-y-1">
+                        <a href="https://wa.me/919274799004"
+                            class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-primary-700 transition-all duration-200 bg-white border-2 border-primary-100 rounded-lg hover:border-primary-600 hover:bg-primary-50 hover:text-primary-800 hover:-translate-y-1">
                             <i data-lucide="send" class="w-5 h-5 mr-2 text-green-500"></i>
                             Send an Inquiry
                         </a>
@@ -706,7 +786,8 @@
                             <div class="flex items-center gap-3">
                                 <i data-lucide="mail" class="w-5 h-5 text-neutral-400 flex-shrink-0"></i>
                                 <a href="mailto:sales1.shreehariindustries@gmail.com"
-                                    class="text-secondary-600 hover:text-secondary-700 text-sm font-medium break-all">nimesh@shreehari-industries.com, sales1.shreehariindustries@gmail.com</a>
+                                    class="text-secondary-600 hover:text-secondary-700 text-sm font-medium break-all">nimesh@shreehari-industries.com,
+                                    sales1.shreehariindustries@gmail.com</a>
                             </div>
                         </div>
                     </div>
@@ -730,13 +811,11 @@
                 </div>
 
                 <!-- Map -->
-                <div class="lg:col-span-2 rounded-large overflow-hidden shadow-lg border border-neutral-200 h-[400px] lg:h-auto bg-neutral-100 relative">
-                    <a href="https://maps.app.goo.gl/x2tdZJNqNfU9ingG9" target="_blank" rel="noopener noreferrer" class="block w-full h-full cursor-pointer">
-                        <img
-                            src="assets/maps.png"
-                            width="100%"
-                            height="100%"
-                            alt="Shree Hari Industries Location"
+                <div
+                    class="lg:col-span-2 rounded-large overflow-hidden shadow-lg border border-neutral-200 h-[400px] lg:h-auto bg-neutral-100 relative">
+                    <a href="https://maps.app.goo.gl/x2tdZJNqNfU9ingG9" target="_blank" rel="noopener noreferrer"
+                        class="block w-full h-full cursor-pointer">
+                        <img src="assets/maps.png" width="100%" height="100%" alt="Shree Hari Industries Location"
                             class="w-full h-full object-cover cursor-pointer">
                     </a>
                 </div>
@@ -774,32 +853,46 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                 <div>
                     <div class="flex items-center gap-2 mb-4">
-                        <div class="w-8 h-8 bg-gradient-to-br from-primary-600 to-secondary-500 rounded flex items-center justify-center font-bold text-sm">S</div>
+                        <div
+                            class="w-8 h-8 bg-gradient-to-br from-primary-600 to-secondary-500 rounded flex items-center justify-center font-bold text-sm">
+                            S</div>
                         <span class="font-heading font-bold text-lg">SHREE HARI INDUSTRIES</span>
                     </div>
-                    <p class="text-neutral-400 text-sm mb-6">Reliable Industrial Packaging Solutions for manufacturing and logistics businesses across India.</p>
+                    <p class="text-neutral-400 text-sm mb-6">Reliable Industrial Packaging Solutions for manufacturing
+                        and logistics businesses across India.</p>
                     <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/share/1BsoxXRMu7/" class="text-neutral-400 hover:text-white transition-colors" aria-label="Facebook"><i data-lucide="facebook" class="w-5 h-5"></i></a>
-                        <a href="https://www.linkedin.com/company/shree-hari-industrie/" class="text-neutral-400 hover:text-white transition-colors" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-                        <a href="https://www.instagram.com/shree_hariindustries?igsh=bXFoaTV3ZDM2djNt" class="text-neutral-400 hover:text-white transition-colors" aria-label="Instagram"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                        <a href="https://www.facebook.com/share/1BsoxXRMu7/"
+                            class="text-neutral-400 hover:text-white transition-colors" aria-label="Facebook"><i
+                                data-lucide="facebook" class="w-5 h-5"></i></a>
+                        <a href="https://www.linkedin.com/company/shree-hari-industrie/"
+                            class="text-neutral-400 hover:text-white transition-colors" aria-label="LinkedIn"><i
+                                data-lucide="linkedin" class="w-5 h-5"></i></a>
+                        <a href="https://www.instagram.com/shree_hariindustries?igsh=bXFoaTV3ZDM2djNt"
+                            class="text-neutral-400 hover:text-white transition-colors" aria-label="Instagram"><i
+                                data-lucide="instagram" class="w-5 h-5"></i></a>
                     </div>
                 </div>
                 <div>
                     <h4 class="font-bold text-white mb-4">Company</h4>
                     <ul class="space-y-2 text-sm text-neutral-400">
                         <li><a href="index.html" class="hover:text-secondary-500 transition-colors">Home</a></li>
-                        <li><a href="index.html#about" class="hover:text-secondary-500 transition-colors">About Us</a></li>
+                        <li><a href="index.html#about" class="hover:text-secondary-500 transition-colors">About Us</a>
+                        </li>
                         <li><a href="products.html" class="hover:text-secondary-500 transition-colors">Products</a></li>
-                        <li><a href="index.html#industries" class="hover:text-secondary-500 transition-colors">Industries We Serve</a></li>
-                        <li><a href="index.html#gallery" class="hover:text-secondary-500 transition-colors">Gallery</a></li>
-                        <li><a href="contactus.html" class="hover:text-secondary-500 transition-colors">Contact Us</a></li>
+                        <li><a href="index.html#industries"
+                                class="hover:text-secondary-500 transition-colors">Industries We Serve</a></li>
+                        <li><a href="index.html#gallery" class="hover:text-secondary-500 transition-colors">Gallery</a>
+                        </li>
+                        <li><a href="contactus.html" class="hover:text-secondary-500 transition-colors">Contact Us</a>
+                        </li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="font-bold text-white mb-4">Our Products</h4>
                     <ul class="space-y-2 text-sm text-neutral-400">
                         <li><span class="hover:text-secondary-500 transition-colors">Stretch Film</span></li>
-                        <li><span class="hover:text-secondary-500 transition-colors">Machine Grade Stretch Film</span></li>
+                        <li><span class="hover:text-secondary-500 transition-colors">Machine Grade Stretch Film</span>
+                        </li>
                         <li><span class="hover:text-secondary-500 transition-colors">VCI Film</span></li>
                         <li><span class="hover:text-secondary-500 transition-colors">Silage Film</span></li>
                         <li><span class="hover:text-secondary-500 transition-colors">BOPP Adhesive Tape</span></li>
@@ -810,7 +903,8 @@
                     <ul class="space-y-3 text-sm text-neutral-400">
                         <li class="flex items-center gap-2">
                             <i data-lucide="message-circle" class="w-4 h-4 text-secondary-500 shrink-0"></i>
-                            <a href="https://wa.me/919274799004" class="hover:text-white transition-colors">+91 92747 99004</a>
+                            <a href="https://wa.me/919274799004" class="hover:text-white transition-colors">+91 92747
+                                99004</a>
                         </li>
                         <li class="flex items-center gap-2">
                             <i data-lucide="mail" class="w-4 h-4 text-secondary-500 shrink-0"></i>
@@ -819,7 +913,7 @@
                         <li class="flex items-start gap-2">
                             <i data-lucide="map-pin" class="w-4 h-4 text-secondary-500 shrink-0 mt-0.5"></i>
                             <span>Shree Hari Industries<br>
-GF, Plot No.1, Shiv Aradhna, Industrial, Kuha, Gujarat 382433</span>
+                                GF, Plot No.1, Shiv Aradhna, Industrial, Kuha, Gujarat 382433</span>
                         </li>
                     </ul>
                 </div>
@@ -842,7 +936,9 @@ GF, Plot No.1, Shiv Aradhna, Industrial, Kuha, Gujarat 382433</span>
             class="flex items-center justify-center w-14 h-14 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 hover:scale-110 transition-all duration-300 group relative"
             aria-label="WhatsApp Us">
             <img src="assets/whatsapp.png" alt="WhatsApp" class="w-[54px] h-[54px]" />
-            <span class="absolute right-16 bg-white text-neutral-800 px-3 py-1 rounded shadow-md text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">WhatsApp Us</span>
+            <span
+                class="absolute right-16 bg-white text-neutral-800 px-3 py-1 rounded shadow-md text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">WhatsApp
+                Us</span>
         </a>
     </div>
 
@@ -856,57 +952,113 @@ GF, Plot No.1, Shiv Aradhna, Industrial, Kuha, Gujarat 382433</span>
                         <i data-lucide="alert-triangle" class="w-6 h-6"></i>
                     </div>
                     <div>
-                        <p class="text-xs uppercase tracking-[0.24em] text-orange-100 font-semibold">Public Fraud Alert</p>
-                        <h3 id="visitor-popup-title" class="mt-1 text-base sm:text-2xl font-bold leading-tight">Important notice for all visitors</h3>
+                        <p class="text-xs uppercase tracking-[0.24em] text-orange-100 font-semibold">Public Fraud Alert
+                        </p>
+                        <h3 id="visitor-popup-title" class="mt-1 text-base sm:text-2xl font-bold leading-tight">
+                            Important notice for all visitors</h3>
                     </div>
                 </div>
             </div>
             <div class="visitor-popup-body p-4 space-y-5 bg-white text-neutral-900">
                 <div class="space-y-4">
-                    <p class="font-semibold text-sm uppercase tracking-[0.12em] text-neutral-700">Dear Customers, Suppliers &amp; Business Associates</p>
-                    <p class="text-sm leading-7 text-neutral-600">We are sharing this alert because fraudsters are using fake packaging and contact details while pretending to be Shree Hari Industries. Please verify all communication before responding.</p>
+                    <p class="font-semibold text-sm uppercase tracking-[0.12em] text-neutral-700">Public Notice from Shree Hari Industries</p>
+                    <p class="text-sm leading-7 text-neutral-600">It has come to our attention that unauthorized individuals are illegally using the name, logo, address, GST details, email, and other company information of Shree Hari Industries to deceive customers and collect payments fraudulently.</p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
                     <div class="rounded-3xl border-2 border-orange-500 bg-orange-50 p-5 flex flex-col justify-center">
                         <p class="text-sm font-semibold text-neutral-700">PLEASE NOTE:</p>
-                        <p class="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-900">+91 89534 94615</p>
-                        <p class="mt-2 text-sm text-neutral-700">is <span class="font-semibold">NOT</span> associated with SHREE HARI INDUSTRIES.</p>
+                        <p class="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-900">+91 89534
+                            94615</p>
+                        <p class="mt-2 text-sm text-neutral-700">is <span class="font-semibold">NOT</span> associated
+                            with SHREE HARI INDUSTRIES.</p>
                     </div>
-                    <div class="rounded-3xl border-2 border-red-100 bg-red-50 p-5 space-y-3 flex flex-col justify-center">
-                        <div class="flex items-center gap-2 text-sm font-bold text-neutral-900 uppercase tracking-[0.12em]"><span class="text-orange-600 text-base">!</span> BE ALERT!</div>
+                    <div
+                        class="rounded-3xl border-2 border-red-100 bg-red-50 p-5 space-y-3 flex flex-col justify-center">
+                        <div
+                            class="flex items-center gap-2 text-sm font-bold text-neutral-900 uppercase tracking-[0.12em]">
+                            <span class="text-orange-600 text-base">!</span> BE ALERT!</div>
                         <ul class="space-y-2.5 text-sm text-neutral-600">
-                            <li class="flex items-start gap-2"><span class="mt-0.5 text-orange-500 shrink-0">✕</span><span>Any calls or WhatsApp messages from this number should be treated as <span class="font-semibold text-orange-600">fraudulent</span>.</span></li>
-                            <li class="flex items-start gap-2"><span class="mt-0.5 text-orange-500 shrink-0">✕</span><span>Do <span class="font-semibold text-orange-600">NOT</span> make any payments or share details with this contact.</span></li>
+                            <li class="flex items-start gap-2"><span
+                                    class="mt-0.5 text-orange-500 shrink-0">✕</span><span>Any calls or WhatsApp messages
+                                    from this number should be treated as <span
+                                        class="font-semibold text-orange-600">fraudulent</span>.</span></li>
+                            <li class="flex items-start gap-2"><span
+                                    class="mt-0.5 text-orange-500 shrink-0">✕</span><span>Do <span
+                                        class="font-semibold text-orange-600">NOT</span> make any payments or share
+                                    details with this contact.</span></li>
                         </ul>
                     </div>
                 </div>
+
+                <!-- New Be Alert Box -->
+                <div class="rounded-3xl border-2 border-red-100 bg-red-50 p-5 space-y-3">
+                    <div class="flex items-center gap-2 text-sm font-bold text-neutral-900 uppercase tracking-[0.12em]">
+                        <span class="text-orange-600 text-base">⚠️</span> Please Be Alert
+                    </div>
+                    <ul class="space-y-2.5 text-sm text-neutral-600">
+                        <li class="flex items-start gap-2">
+                            <span class="mt-0.5 text-orange-500 shrink-0">✕</span>
+                            <span>Verify all bank account details before making any payment.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="mt-0.5 text-orange-500 shrink-0">✕</span>
+                            <span>Confirm quotations and purchase orders only through our official contact channels.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="mt-0.5 text-orange-500 shrink-0">✕</span>
+                            <span>Do not trust unknown WhatsApp numbers, emails, or social media accounts claiming to represent Shree Hari Industries.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="mt-0.5 text-orange-500 shrink-0">✕</span>
+                            <span>We are not responsible for any payments made to unauthorized persons.</span>
+                        </li>
+                    </ul>
+                </div>
+
                 <div class="rounded-3xl border border-neutral-200 bg-neutral-50 p-5">
-                    <p class="text-sm font-semibold uppercase tracking-[0.12em] text-neutral-700">Use our official contacts only</p>
+                    <p class="text-sm font-semibold uppercase tracking-[0.12em] text-neutral-700">Use our official
+                        contacts only</p>
                     <div class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-2">
-                        <a href="tel:+919274799004" class="rounded-2xl bg-white p-3 shadow-sm border border-neutral-200 hover:border-green-300 hover:shadow-md transition-all">
+                        <a href="tel:+919274799004"
+                            class="rounded-2xl bg-white p-3 shadow-sm border border-neutral-200 hover:border-green-300 hover:shadow-md transition-all">
                             <div class="flex items-center gap-2">
-                                <div class="w-8 h-8 rounded-xl bg-green-100 text-green-700 flex items-center justify-center shrink-0"><i data-lucide="phone-call" class="w-4 h-4"></i></div>
+                                <div
+                                    class="w-8 h-8 rounded-xl bg-green-100 text-green-700 flex items-center justify-center shrink-0">
+                                    <i data-lucide="phone-call" class="w-4 h-4"></i></div>
                                 <div class="min-w-0">
-                                    <p class="text-xs uppercase tracking-[0.10em] text-neutral-500 leading-tight">Official Number</p>
-                                    <p class="font-semibold text-neutral-900 text-xs sm:text-sm leading-tight mt-0.5">+91 92747 99004</p>
+                                    <p class="text-xs uppercase tracking-[0.10em] text-neutral-500 leading-tight">
+                                        Official Number</p>
+                                    <p class="font-semibold text-neutral-900 text-xs sm:text-sm leading-tight mt-0.5">
+                                        +91 92747 99004</p>
                                 </div>
                             </div>
                         </a>
-                        <a href="https://shreehari-industries.com" target="_blank" rel="noopener noreferrer" class="rounded-2xl bg-white p-3 shadow-sm border border-neutral-200 hover:border-blue-300 hover:shadow-md transition-all">
+                        <a href="https://shreehari-industries.com" target="_blank" rel="noopener noreferrer"
+                            class="rounded-2xl bg-white p-3 shadow-sm border border-neutral-200 hover:border-blue-300 hover:shadow-md transition-all">
                             <div class="flex items-center gap-2">
-                                <div class="w-8 h-8 rounded-xl bg-blue-100 text-primary-700 flex items-center justify-center shrink-0"><i data-lucide="globe" class="w-4 h-4"></i></div>
+                                <div
+                                    class="w-8 h-8 rounded-xl bg-blue-100 text-primary-700 flex items-center justify-center shrink-0">
+                                    <i data-lucide="globe" class="w-4 h-4"></i></div>
                                 <div class="min-w-0">
-                                    <p class="text-xs uppercase tracking-[0.10em] text-neutral-500 leading-tight">Official Website</p>
-                                    <p class="font-semibold text-neutral-900 text-xs sm:text-sm leading-tight mt-0.5">shreehari-industries.com</p>
+                                    <p class="text-xs uppercase tracking-[0.10em] text-neutral-500 leading-tight">
+                                        Official Website</p>
+                                    <p class="font-semibold text-neutral-900 text-xs sm:text-sm leading-tight mt-0.5">
+                                        shreehari-industries.com</p>
                                 </div>
                             </div>
                         </a>
-                        <a href="mailto:nimesh@shreehari-industries.com" class="rounded-2xl bg-white p-3 shadow-sm border border-neutral-200 hover:border-orange-300 hover:shadow-md transition-all">
+                        <a href="mailto:nimesh@shreehari-industries.com"
+                            class="rounded-2xl bg-white p-3 shadow-sm border border-neutral-200 hover:border-orange-300 hover:shadow-md transition-all">
                             <div class="flex items-center gap-2">
-                                <div class="w-8 h-8 rounded-xl bg-orange-100 text-orange-700 flex items-center justify-center shrink-0"><i data-lucide="mail" class="w-4 h-4"></i></div>
+                                <div
+                                    class="w-8 h-8 rounded-xl bg-orange-100 text-orange-700 flex items-center justify-center shrink-0">
+                                    <i data-lucide="mail" class="w-4 h-4"></i></div>
                                 <div class="min-w-0">
-                                    <p class="text-xs uppercase tracking-[0.10em] text-neutral-500 leading-tight">Official Email</p>
-                                    <p class="font-semibold text-neutral-900 text-xs sm:text-sm leading-tight mt-0.5 truncate">nimesh@shreehari-industries.com</p>
+                                    <p class="text-xs uppercase tracking-[0.10em] text-neutral-500 leading-tight">
+                                        Official Email</p>
+                                    <p
+                                        class="font-semibold text-neutral-900 text-xs sm:text-sm leading-tight mt-0.5 truncate">
+                                        nimesh@shreehari-industries.com</p>
                                 </div>
                             </div>
                         </a>
@@ -914,17 +1066,21 @@ GF, Plot No.1, Shiv Aradhna, Industrial, Kuha, Gujarat 382433</span>
                 </div>
                 <div class="rounded-3xl bg-[#f7fafc] p-5 border border-neutral-200">
                     <div class="flex items-start gap-3">
-                        <div class="w-10 h-10 rounded-2xl bg-green-100 text-green-700 flex items-center justify-center shrink-0"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
+                        <div class="w-10 h-10 rounded-2xl bg-orange-100 text-orange-700 flex items-center justify-center shrink-0">
+                            <i data-lucide="shield-alert" class="w-5 h-5"></i>
+                        </div>
                         <div>
-                            <p class="font-semibold text-neutral-900">Security</p>
-                            <p class="mt-2 text-sm leading-6 text-neutral-600">Legal action for misleading Shree Hari Industries is underway. The number above is not associated with our company.</p>
+                            <p class="font-semibold text-neutral-900">Report Suspicious Activity</p>
+                            <p class="mt-2 text-sm leading-6 text-neutral-600">If you receive any suspicious call, message, quotation, or payment request using our company's name, please contact us immediately.</p>
                         </div>
                     </div>
                 </div>
-                <p class="text-sm leading-6 text-neutral-600">Thank you for your cooperation. Please use only verified channels and official contact details for all enquiries.</p>
                 <div class="flex flex-col gap-3 sm:flex-row sm:justify-end">
-                    <button onclick="closeVisitorPopup()" class="inline-flex items-center justify-center rounded-full border border-neutral-300 px-5 py-3 text-sm font-semibold text-neutral-700 transition hover:bg-neutral-100">Close</button>
-                    <a href="contactus.html" class="inline-flex items-center justify-center rounded-full bg-primary-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-primary-800">Official Contact Page</a>
+                    <button onclick="closeVisitorPopup()"
+                        class="inline-flex items-center justify-center rounded-full border border-neutral-300 px-5 py-3 text-sm font-semibold text-neutral-700 transition hover:bg-neutral-100">Close</button>
+                    <a href="contactus.html"
+                        class="inline-flex items-center justify-center rounded-full bg-primary-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-primary-800">Official
+                        Contact Page</a>
                 </div>
             </div>
         </div>
@@ -933,39 +1089,52 @@ GF, Plot No.1, Shiv Aradhna, Industrial, Kuha, Gujarat 382433</span>
     <!-- ═══════════════════════════════════════════
          ENQUIRY MODAL
     ═══════════════════════════════════════════ -->
-    <div id="enquiry-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="enquiry-modal-title" onclick="closeOnBackdrop(event,'enquiry-modal')">
+    <div id="enquiry-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="enquiry-modal-title"
+        onclick="closeOnBackdrop(event,'enquiry-modal')">
         <div class="modal-box">
             <div class="flex items-center justify-between p-6 border-b border-neutral-100">
                 <div>
-                    <h2 id="enquiry-modal-title" class="font-heading text-xl font-bold text-neutral-900">Send Enquiry</h2>
+                    <h2 id="enquiry-modal-title" class="font-heading text-xl font-bold text-neutral-900">Send Enquiry
+                    </h2>
                     <p class="text-sm text-neutral-500 mt-0.5">We'll respond within 24 hours</p>
                 </div>
-                <button onclick="closeModal('enquiry-modal')" class="w-9 h-9 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-600 transition-colors" aria-label="Close">
+                <button onclick="closeModal('enquiry-modal')"
+                    class="w-9 h-9 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-600 transition-colors"
+                    aria-label="Close">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
             <div class="p-6 space-y-4">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-name">Name <span class="text-red-500">*</span></label>
-                        <input type="text" id="eq-name" placeholder="Your full name" class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors">
+                        <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-name">Name <span
+                                class="text-red-500">*</span></label>
+                        <input type="text" id="eq-name" placeholder="Your full name"
+                            class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors">
                     </div>
                     <div>
-                        <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-phone">Phone Number <span class="text-red-500">*</span></label>
-                        <input type="tel" id="eq-phone" placeholder="+91 XXXXX XXXXX" class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors">
+                        <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-phone">Phone Number
+                            <span class="text-red-500">*</span></label>
+                        <input type="tel" id="eq-phone" placeholder="+91 XXXXX XXXXX"
+                            class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors">
                     </div>
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-email">Email</label>
-                    <input type="email" id="eq-email" placeholder="your@email.com" class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors">
+                    <input type="email" id="eq-email" placeholder="your@email.com"
+                        class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors">
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-company">Company Name</label>
-                    <input type="text" id="eq-company" placeholder="Your company name" class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors">
+                    <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-company">Company
+                        Name</label>
+                    <input type="text" id="eq-company" placeholder="Your company name"
+                        class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors">
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-product">Product Interested In</label>
-                    <select id="eq-product" class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors bg-white">
+                    <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-product">Product
+                        Interested In</label>
+                    <select id="eq-product"
+                        class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors bg-white">
                         <option value="">— Select a Product —</option>
                         <option value="stretch-film">Stretch Film</option>
                         <option value="machine-stretch">Machine Grade Stretch Film</option>
@@ -979,19 +1148,24 @@ GF, Plot No.1, Shiv Aradhna, Industrial, Kuha, Gujarat 382433</span>
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-message">Message</label>
-                    <textarea id="eq-message" rows="3" placeholder="Describe your requirements, quantities, specifications..." class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors resize-none"></textarea>
+                    <textarea id="eq-message" rows="3"
+                        placeholder="Describe your requirements, quantities, specifications..."
+                        class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors resize-none"></textarea>
                 </div>
 
                 <!-- Buttons -->
                 <div class="flex flex-col sm:flex-row gap-3 pt-2">
-                    <button onclick="submitEnquiry()" class="flex-1 inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white bg-primary-700 rounded-lg hover:bg-primary-800 transition-colors">
+                    <button onclick="submitEnquiry()"
+                        class="flex-1 inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white bg-primary-700 rounded-lg hover:bg-primary-800 transition-colors">
                         <i data-lucide="send" class="w-4 h-4 mr-2"></i>Submit Enquiry
                     </button>
-                    <a id="enquiry-wa-btn" href="https://wa.me/919274799004" target="_blank" class="flex-1 inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white bg-green-500 rounded-lg hover:bg-green-600 transition-colors">
+                    <a id="enquiry-wa-btn" href="https://wa.me/919274799004" target="_blank"
+                        class="flex-1 inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white bg-green-500 rounded-lg hover:bg-green-600 transition-colors">
                         <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i>WhatsApp Enquiry
                     </a>
                 </div>
-                <button onclick="closeModal('enquiry-modal')" class="w-full text-center text-sm text-neutral-400 hover:text-neutral-600 transition-colors py-1">Cancel</button>
+                <button onclick="closeModal('enquiry-modal')"
+                    class="w-full text-center text-sm text-neutral-400 hover:text-neutral-600 transition-colors py-1">Cancel</button>
             </div>
         </div>
     </div>
@@ -1052,7 +1226,7 @@ GF, Plot No.1, Shiv Aradhna, Industrial, Kuha, Gujarat 382433</span>
         });
 
         // ESC key closes modals
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 closeVisitorPopup();
                 closeModal('enquiry-modal');
