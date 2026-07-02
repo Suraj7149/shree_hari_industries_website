@@ -271,6 +271,97 @@
             display: flex;
         }
 
+        .visitor-popup-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 1400;
+            background: rgba(15, 23, 42, 0.68);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: all 0.25s ease;
+        }
+
+        .visitor-popup-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .visitor-popup-card {
+            width: min(100%, 1060px);
+            max-width: 1060px;
+            max-height: calc(100vh - 2rem);
+            background: #fff;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 32px 80px rgba(15, 23, 42, 0.18);
+            transform: translateY(16px);
+            transition: transform 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .visitor-popup-body {
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .visitor-popup-backdrop.active .visitor-popup-card {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 640px) {
+            .visitor-popup-backdrop {
+                padding: 0.5rem 1rem 1rem;
+                align-items: center;
+            }
+
+            .visitor-popup-card {
+                width: 100%;
+                max-width: 100%;
+                border-radius: 1.25rem;
+                max-height: calc(100vh - 1.5rem);
+            }
+        }
+
+        .visitor-popup-card .text-xs {
+            letter-spacing: 0.18em;
+        }
+
+        .visitor-popup-close {
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f1f5f9;
+            color: #475569;
+            transition: background-color 0.2s ease;
+        }
+
+        .visitor-popup-close:hover {
+            background: #e2e8f0;
+        }
+
+        .visitor-popup-card .rounded-3xl {
+            border-radius: 1.5rem;
+        }
+
+        .visitor-popup-card .rounded-2xl {
+            border-radius: 1.25rem;
+        }
+
+        .visitor-popup-card .font-extrabold {
+            font-weight: 800;
+        }
+
         .modal-box {
             background: #fff;
             border-radius: 1rem;
@@ -1050,8 +1141,7 @@
                         <div
                             class="absolute inset-0 bg-neutral-900/10 group-hover:bg-neutral-900/0 transition-colors z-10">
                         </div>
-                        <img src="assets/color_stretch_film.jpeg"
-                            alt="Colour Stretch Film"
+                        <img src="assets/color_stretch_film.jpeg" alt="Colour Stretch Film"
                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                             loading="lazy" width="400" height="208">
                     </div>
@@ -1073,8 +1163,7 @@
                         <div
                             class="absolute inset-0 bg-neutral-900/10 group-hover:bg-neutral-900/0 transition-colors z-10">
                         </div>
-                        <img src="assets/printed_stretch_fillm.jpeg"
-                            alt="Printed Stretch Film"
+                        <img src="assets/printed_stretch_fillm.jpeg" alt="Printed Stretch Film"
                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                             loading="lazy" width="400" height="208">
                     </div>
@@ -1192,56 +1281,64 @@
                             class="p-6 rounded-xl bg-neutral-50 border border-neutral-100 hover:border-primary-200 hover:shadow-lg transition-all duration-300 group text-center card-hover-effect">
                             <div
                                 class="w-12 h-12 mx-auto bg-white rounded-full shadow-sm flex items-center justify-center text-primary-600 mb-3 group-hover:scale-110 transition-transform">
-                                <i data-lucide="car" class="w-6 h-6"></i></div>
+                                <i data-lucide="car" class="w-6 h-6"></i>
+                            </div>
                             <h4 class="font-bold text-neutral-900 text-sm">Automotive</h4>
                         </div>
                         <div
                             class="p-6 rounded-xl bg-neutral-50 border border-neutral-100 hover:border-primary-200 hover:shadow-lg transition-all duration-300 group text-center card-hover-effect">
                             <div
                                 class="w-12 h-12 mx-auto bg-white rounded-full shadow-sm flex items-center justify-center text-primary-600 mb-3 group-hover:scale-110 transition-transform">
-                                <i data-lucide="settings-2" class="w-6 h-6"></i></div>
+                                <i data-lucide="settings-2" class="w-6 h-6"></i>
+                            </div>
                             <h4 class="font-bold text-neutral-900 text-sm">Engineering</h4>
                         </div>
                         <div
                             class="p-6 rounded-xl bg-neutral-50 border border-neutral-100 hover:border-primary-200 hover:shadow-lg transition-all duration-300 group text-center card-hover-effect">
                             <div
                                 class="w-12 h-12 mx-auto bg-white rounded-full shadow-sm flex items-center justify-center text-primary-600 mb-3 group-hover:scale-110 transition-transform">
-                                <i data-lucide="factory" class="w-6 h-6"></i></div>
+                                <i data-lucide="factory" class="w-6 h-6"></i>
+                            </div>
                             <h4 class="font-bold text-neutral-900 text-sm">Manufacturing</h4>
                         </div>
                         <div
                             class="p-6 rounded-xl bg-neutral-50 border border-neutral-100 hover:border-primary-200 hover:shadow-lg transition-all duration-300 group text-center card-hover-effect">
                             <div
                                 class="w-12 h-12 mx-auto bg-white rounded-full shadow-sm flex items-center justify-center text-primary-600 mb-3 group-hover:scale-110 transition-transform">
-                                <i data-lucide="truck" class="w-6 h-6"></i></div>
+                                <i data-lucide="truck" class="w-6 h-6"></i>
+                            </div>
                             <h4 class="font-bold text-neutral-900 text-sm">Logistics</h4>
                         </div>
                         <div
                             class="p-6 rounded-xl bg-neutral-50 border border-neutral-100 hover:border-primary-200 hover:shadow-lg transition-all duration-300 group text-center card-hover-effect">
                             <div
                                 class="w-12 h-12 mx-auto bg-white rounded-full shadow-sm flex items-center justify-center text-primary-600 mb-3 group-hover:scale-110 transition-transform">
-                                <i data-lucide="shopping-bag" class="w-6 h-6"></i></div>
+                                <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            </div>
                             <h4 class="font-bold text-neutral-900 text-sm">FMCG</h4>
                         </div>
                         <div
                             class="p-6 rounded-xl bg-neutral-50 border border-neutral-100 hover:border-primary-200 hover:shadow-lg transition-all duration-300 group text-center card-hover-effect">
                             <div
                                 class="w-12 h-12 mx-auto bg-white rounded-full shadow-sm flex items-center justify-center text-primary-600 mb-3 group-hover:scale-110 transition-transform">
-                                <i data-lucide="globe" class="w-6 h-6"></i></div>
+                                <i data-lucide="globe" class="w-6 h-6"></i>
+                            </div>
                             <h4 class="font-bold text-neutral-900 text-sm">Export Packaging</h4>
                         </div>
                         <div
                             class="p-6 rounded-xl bg-neutral-50 border border-neutral-100 hover:border-primary-200 hover:shadow-lg transition-all duration-300 group text-center card-hover-effect">
                             <div
                                 class="w-12 h-12 mx-auto bg-white rounded-full shadow-sm flex items-center justify-center text-primary-600 mb-3 group-hover:scale-110 transition-transform">
-                                <i data-lucide="warehouse" class="w-6 h-6"></i></div>
+                                <i data-lucide="warehouse" class="w-6 h-6"></i>
+                            </div>
                             <h4 class="font-bold text-neutral-900 text-sm">Warehousing</h4>
                         </div>
                         <div
                             class="p-6 rounded-xl bg-neutral-50 border border-neutral-100 hover:border-primary-200 hover:shadow-lg transition-all duration-300 group text-center card-hover-effect">
                             <div
                                 class="w-12 h-12 mx-auto bg-white rounded-full shadow-sm flex items-center justify-center text-primary-600 mb-3 group-hover:scale-110 transition-transform">
-                                <i data-lucide="wheat" class="w-6 h-6"></i></div>
+                                <i data-lucide="wheat" class="w-6 h-6"></i>
+                            </div>
                             <h4 class="font-bold text-neutral-900 text-sm">Agriculture</h4>
                         </div>
                     </div>
@@ -1267,8 +1364,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                 <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer"
                     onclick="openLightbox('assets/Industrial_product_wrapping.jpeg','Stretch Film Products','Stretch Film Products')">
-                    <img src="assets/Industrial_product_wrapping.jpeg"
-                        alt="Stretch Film Products"
+                    <img src="assets/Industrial_product_wrapping.jpeg" alt="Stretch Film Products"
                         class="w-full h-60 object-cover group-hover:scale-110 transition-transform duration-500"
                         loading="lazy" width="600" height="240">
                     <div
@@ -1283,8 +1379,7 @@
                 </div>
                 <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer"
                     onclick="openLightbox('assets/VCI_Packaging_for_metal_parts.jpeg','VCI Film Packaging','VCI Film Packaging')">
-                    <img src="assets/VCI_Packaging_for_metal_parts.jpeg"
-                        alt="VCI Film Packaging"
+                    <img src="assets/VCI_Packaging_for_metal_parts.jpeg" alt="VCI Film Packaging"
                         class="w-full h-60 object-cover group-hover:scale-110 transition-transform duration-500"
                         loading="lazy" width="600" height="240">
                     <div
@@ -1299,8 +1394,7 @@
                 </div>
                 <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer"
                     onclick="openLightbox('assets/BOPP_Tape_Carton.jpeg','BOPP Adhesive Tape','BOPP Adhesive Tape')">
-                    <img src="assets/BOPP_Tape_Carton.jpeg"
-                        alt="BOPP Adhesive Tape"
+                    <img src="assets/BOPP_Tape_Carton.jpeg" alt="BOPP Adhesive Tape"
                         class="w-full h-60 object-cover group-hover:scale-110 transition-transform duration-500"
                         loading="lazy" width="600" height="240">
                     <div
@@ -1315,8 +1409,7 @@
                 </div>
                 <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer"
                     onclick="openLightbox('assets/Warehouse_packaging.jpeg','Industrial Packaging Applications','Industrial Applications')">
-                    <img src="assets/Warehouse_packaging.jpeg"
-                        alt="Industrial Packaging Applications"
+                    <img src="assets/Warehouse_packaging.jpeg" alt="Industrial Packaging Applications"
                         class="w-full h-60 object-cover group-hover:scale-110 transition-transform duration-500"
                         loading="lazy" width="600" height="240">
                     <div
@@ -1331,8 +1424,7 @@
                 </div>
                 <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer sm:col-span-2"
                     onclick="openLightbox('assets/printed_stretch_film.jpeg','Colour Stretch Film Range','Colour Stretch Film')">
-                    <img src="assets/printed_stretch_film.jpeg"
-                        alt="Colour Stretch Film Range"
+                    <img src="assets/printed_stretch_film.jpeg" alt="Colour Stretch Film Range"
                         class="w-full h-60 object-cover group-hover:scale-110 transition-transform duration-500"
                         loading="lazy" width="800" height="240">
                     <div
@@ -1347,8 +1439,7 @@
                 </div>
                 <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer sm:col-span-2"
                     onclick="openLightbox('assets/Engineering_componenets_packed_VCI_Packing.jpeg','Manufacturing Facility','Manufacturing')">
-                    <img src="assets/Engineering_componenets_packed_VCI_Packing.jpeg"
-                        alt="Manufacturing Facility"
+                    <img src="assets/Engineering_componenets_packed_VCI_Packing.jpeg" alt="Manufacturing Facility"
                         class="w-full h-60 object-cover group-hover:scale-110 transition-transform duration-500"
                         loading="lazy" width="800" height="240">
                     <div
@@ -1471,7 +1562,8 @@
                                 <h4 class="font-bold text-neutral-900">Email Us</h4>
                                 <p class="text-neutral-600 mt-1"><a href="/cdn-cgi/l/email-protection"
                                         class="__cf_email__"
-                                        data-cfemail="c5acaba3aa85b6adb7a0a0ada4b7ace8acaba1b0b6b1b7aca0b6eba6aaa8">nimesh@shreehari-industries.com, sales1.shreehariindustries@gmail.com</a>
+                                        data-cfemail="c5acaba3aa85b6adb7a0a0ada4b7ace8acaba1b0b6b1b7aca0b6eba6aaa8">nimesh@shreehari-industries.com,
+                                        sales1.shreehariindustries@gmail.com</a>
                                 </p>
                             </div>
                         </div>
@@ -1566,12 +1658,13 @@
                         <li class="flex items-center gap-2">
                             <i data-lucide="mail" class="w-4 h-4 text-secondary-500 shrink-0"></i>
                             <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                    data-cfemail="5a33343c351a2932283f3f323b28337733343e2f292e28333f2974393537">nimesh@shreehari-industries.com, sales1.shreehariindustries@gmail.com</a></span>
+                                    data-cfemail="5a33343c351a2932283f3f323b28337733343e2f292e28333f2974393537">nimesh@shreehari-industries.com,
+                                    sales1.shreehariindustries@gmail.com</a></span>
                         </li>
                         <li class="flex items-start gap-2">
                             <i data-lucide="map-pin" class="w-4 h-4 text-secondary-500 shrink-0 mt-0.5"></i>
                             <span>Shree Hari Industries<br>
-GF, Plot No.1, Shiv Aradhna, Industrial, Kuha, Gujarat 382433</span>
+                                GF, Plot No.1, Shiv Aradhna, Industrial, Kuha, Gujarat 382433</span>
                         </li>
                     </ul>
                 </div>
@@ -1595,6 +1688,131 @@ GF, Plot No.1, Shiv Aradhna, Industrial, Kuha, Gujarat 382433</span>
         </a>
     </div>
 
+    <!-- ═══ FRAUD ALERT POPUP ═══ -->
+    <div id="visitor-popup" class="visitor-popup-backdrop" role="dialog" aria-modal="true"
+        aria-labelledby="visitor-popup-title" onclick="if (event.target === this) closeVisitorPopup();">
+        <div class="visitor-popup-card">
+            <div class="bg-gradient-to-r from-primary-800 via-primary-700 to-secondary-600 px-6 py-6 text-white">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center text-orange-600">
+                        <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs uppercase tracking-[0.24em] text-orange-100 font-semibold">Public Fraud Alert
+                        </p>
+                        <h3 id="visitor-popup-title" class="mt-1 text-base sm:text-2xl font-bold leading-tight">Important notice for all visitors</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="visitor-popup-body p-4 space-y-5 bg-white text-neutral-900">
+                <div class="space-y-4">
+                    <p class="font-semibold text-sm uppercase tracking-[0.12em] text-neutral-700">Dear Customers,
+                        Suppliers & Business Associates</p>
+                    <p class="text-sm leading-7 text-neutral-600">We are sharing this alert because fraudsters are using
+                        fake packaging and contact details while pretending to be Shree Hari Industries. Please verify
+                        all communication before responding.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
+                    <!-- Phone Number Warning Box -->
+                    <div class="rounded-3xl border-2 border-orange-500 bg-orange-50 p-5 flex flex-col justify-center">
+                        <p class="text-sm font-semibold text-neutral-700">PLEASE NOTE:</p>
+                        <p class="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-900">+91 89534 94615</p>
+                        <p class="mt-2 text-sm text-neutral-700">is <span class="font-semibold">NOT</span> associated
+                            with SHREE HARI INDUSTRIES.</p>
+                    </div>
+
+                    <!-- BE ALERT Box -->
+                    <div class="rounded-3xl border-2 border-red-100 bg-red-50 p-5 space-y-3 flex flex-col justify-center">
+                        <div class="flex items-center gap-2 text-sm font-bold text-neutral-900 uppercase tracking-[0.12em]">
+                            <span class="text-orange-600 text-base">!</span> BE ALERT!
+                        </div>
+                        <ul class="space-y-2.5 text-sm text-neutral-600">
+                            <li class="flex items-start gap-2">
+                                <span class="mt-0.5 text-orange-500 shrink-0">✕</span>
+                                <span>Any calls or WhatsApp messages from this number should be treated as <span class="font-semibold text-orange-600">fraudulent</span>.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-0.5 text-orange-500 shrink-0">✕</span>
+                                <span>Do <span class="font-semibold text-orange-600">NOT</span> make any payments or share details with this contact.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="rounded-3xl border border-neutral-200 bg-neutral-50 p-5">
+                    <p class="text-sm font-semibold uppercase tracking-[0.12em] text-neutral-700">Use our official
+                        contacts only</p>
+                    <div class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        <!-- Phone -->
+                        <a href="tel:+919274799004" class="rounded-2xl bg-white p-3 shadow-sm border border-neutral-200 hover:border-green-300 hover:shadow-md transition-all">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-xl bg-green-100 text-green-700 flex items-center justify-center shrink-0">
+                                    <i data-lucide="phone-call" class="w-4 h-4"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <p class="text-xs uppercase tracking-[0.10em] text-neutral-500 leading-tight">Official Number</p>
+                                    <p class="font-semibold text-neutral-900 text-xs sm:text-sm leading-tight mt-0.5">+91 92747 99004</p>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- Website -->
+                        <a href="https://shreehari-industries.com" target="_blank" rel="noopener noreferrer" class="rounded-2xl bg-white p-3 shadow-sm border border-neutral-200 hover:border-blue-300 hover:shadow-md transition-all">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-xl bg-blue-100 text-primary-700 flex items-center justify-center shrink-0">
+                                    <i data-lucide="globe" class="w-4 h-4"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <p class="text-xs uppercase tracking-[0.10em] text-neutral-500 leading-tight">Official Website</p>
+                                    <p class="font-semibold text-neutral-900 text-xs sm:text-sm leading-tight mt-0.5">shreehari-industries.com</p>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- Email -->
+                        <a href="mailto:nimesh@shreehari-industries.com" class="rounded-2xl bg-white p-3 shadow-sm border border-neutral-200 hover:border-orange-300 hover:shadow-md transition-all">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-xl bg-orange-100 text-orange-700 flex items-center justify-center shrink-0">
+                                    <i data-lucide="mail" class="w-4 h-4"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <p class="text-xs uppercase tracking-[0.10em] text-neutral-500 leading-tight">Official Email</p>
+                                    <p class="font-semibold text-neutral-900 text-xs sm:text-sm leading-tight mt-0.5 truncate">nimesh@shreehari-industries.com</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="rounded-3xl bg-[#f7fafc] p-5 border border-neutral-200">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-2xl bg-green-100 text-green-700 flex items-center justify-center">
+                            <i data-lucide="shield-check" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-neutral-900">Security</p>
+                            <p class="mt-2 text-sm leading-6 text-neutral-600">Legal action for misleading Shree Hari
+                                Industries is underway. The number above is not associated with our company.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-sm leading-6 text-neutral-600">Thank you for your cooperation. Please use only verified
+                    channels and official contact details for all enquiries.</p>
+
+                <div class="flex flex-col gap-3 sm:flex-row sm:justify-end">
+                    <button onclick="closeVisitorPopup()"
+                        class="inline-flex items-center justify-center rounded-full border border-neutral-300 bg-white px-5 py-3 text-sm font-semibold text-neutral-900 transition hover:bg-neutral-100">
+                        Close
+                    </button>
+                    <a href="contactus.html"
+                        class="inline-flex items-center justify-center rounded-full bg-primary-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-primary-800">
+                        Official Contact Page
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- ═══════════════════════════════════════════
      ENQUIRY MODAL
 ═══════════════════════════════════════════ -->
@@ -1615,65 +1833,67 @@ GF, Plot No.1, Shiv Aradhna, Industrial, Kuha, Gujarat 382433</span>
             </div>
             <div class="p-6 space-y-4">
                 <form name="inquiry-form" method="POST" data-netlify="true">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-name">Name <span
+                                    class="text-red-500">*</span></label>
+                            <input type="text" id="eq-name" name="full-name" required placeholder="Your full name"
+                                class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-phone">Phone
+                                Number
+                                <span class="text-red-500">*</span></label>
+                            <input type="tel" id="eq-phone" name="phone" required placeholder="+91 XXXXX XXXXX"
+                                class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors">
+                        </div>
+                    </div>
                     <div>
-                        <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-name">Name <span
-                                class="text-red-500">*</span></label>
-                        <input type="text" id="eq-name" name="full-name" required placeholder="Your full name"
+                        <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-email">Email</label>
+                        <input type="email" id="eq-email" name="email" required placeholder="your@email.com"
                             class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors">
                     </div>
                     <div>
-                        <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-phone">Phone Number
-                            <span class="text-red-500">*</span></label>
-                        <input type="tel" id="eq-phone" name="phone" required placeholder="+91 XXXXX XXXXX"
+                        <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-company">Company
+                            Name</label>
+                        <input type="text" id="eq-company" name="company" placeholder="Your company name"
                             class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors">
                     </div>
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-email">Email</label>
-                    <input type="email" id="eq-email" name="email" required placeholder="your@email.com"
-                        class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors">
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-company">Company
-                        Name</label>
-                    <input type="text" id="eq-company" name="company" placeholder="Your company name"
-                        class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors">
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-product">Product
-                        Interested In</label>
-                    <select id="eq-product" name="product-type" required
-                        class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors bg-white">
-                       <option value="" disabled selected>Select a product</option>
-                                <option value="stretch-film">Stretch Film</option>
-                                <option value="machine-stretch">Machine Grade Stretch Film</option>
-                                <option value="manual-stretch">Manual / Baby Core Stretch Film</option>
-                                <option value="colour-stretch">Colour Stretch Film</option>
-                                <option value="printed-stretch">Printed Stretch Film</option>
-                                <option value="vci-film">VCI Film</option>
-                                <option value="silage-film">Silage Film</option>
-                                <option value="bopp-tape">BOPP Adhesive Tape</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-message">Message</label>
-                    <textarea id="eq-message" name="message" required rows="3"
-                        placeholder="Describe your requirements, quantities, specifications..."
-                        class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors resize-none"></textarea>
-                </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-neutral-700 mb-1.5" for="eq-product">Product
+                            Interested In</label>
+                        <select id="eq-product" name="product-type" required
+                            class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors bg-white">
+                            <option value="" disabled selected>Select a product</option>
+                            <option value="stretch-film">Stretch Film</option>
+                            <option value="machine-stretch">Machine Grade Stretch Film</option>
+                            <option value="manual-stretch">Manual / Baby Core Stretch Film</option>
+                            <option value="colour-stretch">Colour Stretch Film</option>
+                            <option value="printed-stretch">Printed Stretch Film</option>
+                            <option value="vci-film">VCI Film</option>
+                            <option value="silage-film">Silage Film</option>
+                            <option value="bopp-tape">BOPP Adhesive Tape</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-neutral-700 mb-1.5"
+                            for="eq-message">Message</label>
+                        <textarea id="eq-message" name="message" required rows="3"
+                            placeholder="Describe your requirements, quantities, specifications..."
+                            class="w-full px-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-200 transition-colors resize-none"></textarea>
+                    </div>
 
-                <!-- Buttons -->
-                <div class="flex flex-col sm:flex-row gap-3 pt-2">
-                    <button type="submit"
-                        class="flex-1 inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white bg-primary-700 rounded-lg hover:bg-primary-800 transition-colors">
-                        <i data-lucide="send" class="w-4 h-4 mr-2"></i>Submit Enquiry
-                    </button>
-                    <a id="enquiry-wa-btn" href="https://wa.me/919274799004" target="_blank"
-                        class="flex-1 inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white bg-green-500 rounded-lg hover:bg-green-600 transition-colors">
-                        <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i>WhatsApp Enquiry
-                    </a>
-                </div>
+                    <!-- Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                        <button type="submit"
+                            class="flex-1 inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white bg-primary-700 rounded-lg hover:bg-primary-800 transition-colors">
+                            <i data-lucide="send" class="w-4 h-4 mr-2"></i>Submit Enquiry
+                        </button>
+                        <a id="enquiry-wa-btn" href="https://wa.me/919274799004" target="_blank"
+                            class="flex-1 inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white bg-green-500 rounded-lg hover:bg-green-600 transition-colors">
+                            <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i>WhatsApp Enquiry
+                        </a>
+                    </div>
                 </form>
                 <button onclick="closeModal('enquiry-modal')"
                     class="w-full text-center text-sm text-neutral-400 hover:text-neutral-600 transition-colors py-1">Cancel</button>
@@ -1798,13 +2018,15 @@ GF, Plot No.1, Shiv Aradhna, Industrial, Kuha, Gujarat 382433</span>
                             </div>
                             <div class="bg-neutral-50 rounded-lg p-4 space-y-2 text-sm text-neutral-600">
                                 <div class="flex items-center gap-2"><i data-lucide="map-pin"
-                                        class="w-4 h-4 text-primary-600 shrink-0"></i>Shree Hari Industries, GF, Plot No.1, Shiv Aradhna, Industrial, Kuha, Gujarat 382433</div>
+                                        class="w-4 h-4 text-primary-600 shrink-0"></i>Shree Hari Industries, GF, Plot
+                                    No.1, Shiv Aradhna, Industrial, Kuha, Gujarat 382433</div>
                                 <div class="flex items-center gap-2"><i data-lucide="phone"
                                         class="w-4 h-4 text-primary-600 shrink-0"></i>+91 92747 99004</div>
                                 <div class="flex items-center gap-2"><i data-lucide="mail"
                                         class="w-4 h-4 text-primary-600 shrink-0"></i><a
                                         href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                        data-cfemail="432a2d252c03302b3126262b22312a6e2a2d27363037312a26306d202c2e">nimesh@shreehari-industries.com, sales1.shreehariindustries@gmail.com</a>
+                                        data-cfemail="432a2d252c03302b3126262b22312a6e2a2d27363037312a26306d202c2e">nimesh@shreehari-industries.com,
+                                        sales1.shreehariindustries@gmail.com</a>
                                 </div>
                             </div>
                         </div>
@@ -2208,6 +2430,23 @@ GF, Plot No.1, Shiv Aradhna, Industrial, Kuha, Gujarat 382433</span>
             }
         };
 
+        // ── Visitor Popup Controls ──
+        function openVisitorPopup() {
+            const popup = document.getElementById('visitor-popup');
+            if (popup) {
+                popup.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeVisitorPopup() {
+            const popup = document.getElementById('visitor-popup');
+            if (popup) {
+                popup.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
         // ── Modal Controls ──
         function openEnquiryModal() {
             document.getElementById('enquiry-modal').classList.add('active');
@@ -2285,8 +2524,11 @@ GF, Plot No.1, Shiv Aradhna, Industrial, Kuha, Gujarat 382433</span>
         window.addEventListener('load', function () {
             setTimeout(function () {
                 const loader = document.getElementById('loading-screen');
-                loader.classList.add('hidden');
+                if (loader) {
+                    loader.classList.add('hidden');
+                }
                 document.body.classList.remove('loading');
+                openVisitorPopup();
             }, 1900);
         });
 
@@ -2325,6 +2567,7 @@ GF, Plot No.1, Shiv Aradhna, Industrial, Kuha, Gujarat 382433</span>
         // ── ESC key closes modals ──
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
+                closeVisitorPopup();
                 closeModal('product-modal');
                 closeModal('enquiry-modal');
                 closeLightbox();
